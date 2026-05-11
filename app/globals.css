@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg font-medium text-sm bg-sky-500 hover:bg-sky-600 text-white transition-colors duration-200 flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg font-medium text-sm bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-900 dark:text-white transition-colors duration-200 flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply px-3 py-2 rounded-lg font-medium text-sm hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .card {
+    @apply bg-white dark:bg-slate-900 rounded-xl shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-800 p-6 transition-all duration-200;
+  }
+
+  .card-sm {
+    @apply bg-white dark:bg-slate-900 rounded-lg shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-800 p-4 transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200;
+  }
+
+  .label-text {
+    @apply block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400;
+  }
+
+  .badge-info {
+    @apply badge bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400;
+  }
+
+  .metric-box {
+    @apply bg-slate-50 dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 text-center transition-all duration-200 hover:shadow-md;
+  }
+
+  .metric-label {
+    @apply text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wide;
+  }
+
+  .metric-value {
+    @apply text-2xl font-bold text-sky-600 dark:text-sky-400 mt-2;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Canvas styling */
+canvas {
+  @apply rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm;
+}
+
+/* Range input styling */
+input[type='range'] {
+  @apply w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer;
+  accent-color: rgb(14, 165, 233);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  @apply appearance-none h-4 w-4 rounded-full bg-sky-500 hover:bg-sky-600 cursor-pointer shadow-md transition-all duration-200;
+}
+
+input[type='range']::-moz-range-thumb {
+  @apply h-4 w-4 rounded-full bg-sky-500 hover:bg-sky-600 cursor-pointer shadow-md border-0 transition-all duration-200;
+}
+
+/* Select styling */
+select {
+  @apply input-field;
+}
