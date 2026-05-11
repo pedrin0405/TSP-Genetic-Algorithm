@@ -63,6 +63,14 @@ export const Canvas: React.FC<CanvasProps> = ({
           </filter>
         </defs>
         <rect width={canvasWidth} height={canvasHeight} fill="url(#grid)" />
+        <image 
+          href="/city-map.png" 
+          width={canvasWidth} 
+          height={canvasHeight} 
+          opacity="0.15" 
+          preserveAspectRatio="xMidYMid slice"
+          style={{ pointerEvents: 'none' }}
+        />
 
         {/* Draw best tour path */}
         {bestTour.length > 1 && (
