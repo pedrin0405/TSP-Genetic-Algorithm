@@ -10,7 +10,7 @@ import { ConvergenceChart } from './ConvergenceChart';
 import styles from './TSPSolver.module.css';
 
 export const TSPSolver: React.FC = () => {
-  const algorithmRef = useRef<TSPGeneticAlgorithm>(new TSPGeneticAlgorithm(30, 0.02, 0.1));
+  const algorithmRef = useRef<TSPGeneticAlgorithm>(new TSPGeneticAlgorithm(50, 0.02, 0.1));
   const animationRef = useRef<number | null>(null);
 
   // Inicializar com 2 cidades
@@ -27,7 +27,7 @@ export const TSPSolver: React.FC = () => {
   const [generationHistory, setGenerationHistory] = useState<number[]>([]);
   const [currentPhase, setCurrentPhase] = useState('initialization');
   const [phaseDescription, setPhaseDescription] = useState('2 cidades carregadas. Adicione mais ou clique Play!');
-  const [populationSize, setPopulationSize] = useState(30);
+  const [populationSize, setPopulationSize] = useState(50);
   const [mutationRate, setMutationRate] = useState(0.02);
   const [elitismRate, setElitismRate] = useState(0.1);
 
