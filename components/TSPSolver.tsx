@@ -176,8 +176,8 @@ export const TSPSolver: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1>TSP Genetic Algorithm Solver</h1>
-        <p>Visualização interativa da solução do Problema do Caixeiro Viajante com Algoritmo Genético</p>
       </div>
+
 
       <div className={styles.mainContent}>
         {/* Coluna 1: Mapa e Controles */}
@@ -187,7 +187,7 @@ export const TSPSolver: React.FC = () => {
             bestTour={bestTour}
             onCityAdded={handleCityAdded}
             canvasWidth={600}
-            canvasHeight={600}
+            canvasHeight={480}
           />
           <div className={styles.controlsWrapper}>
             <Controls

@@ -25,7 +25,7 @@ export const ConvergenceChart: React.FC<ConvergenceChartProps> = ({ data }) => {
   return (
     <div className={styles.chartContainer}>
       <h3 className={styles.title}>Gráfico de Convergência</h3>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={220}>
         <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" vertical={false} />
           <XAxis
