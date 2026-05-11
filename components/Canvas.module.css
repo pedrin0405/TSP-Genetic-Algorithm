@@ -8,29 +8,32 @@
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(100, 150, 255, 0.2);
   transition: all 0.4s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .canvasContainer:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(100, 150, 255, 0.3);
+  box-shadow: 0 12px 48px rgba(0, 113, 227, 0.15);
+  transform: translateY(-2px);
 }
 
 .canvas {
-  background: linear-gradient(135deg, rgba(10, 25, 50, 0.4) 0%, rgba(20, 30, 60, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(10, 25, 50, 0.5) 0%, rgba(20, 30, 60, 0.5) 100%);
   border: 1.5px solid rgba(100, 150, 255, 0.3);
   border-radius: 20px;
   cursor: crosshair;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.4s ease;
   width: 100%;
   height: 100%;
 }
 
 .canvas:hover {
-  border-color: rgba(100, 150, 255, 0.6);
-  box-shadow: 0 12px 48px rgba(100, 150, 255, 0.2);
+  border-color: rgba(100, 150, 255, 0.5);
+  box-shadow: 0 12px 48px rgba(0, 113, 227, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .hint {
