@@ -57,7 +57,7 @@ export const TSPSolver: React.FC = () => {
       newCities.push({
         id: i,
         x: Math.random() * 540 + 30,
-        y: Math.random() * 540 + 30,
+        y: Math.random() * 420 + 30,
       });
     }
 

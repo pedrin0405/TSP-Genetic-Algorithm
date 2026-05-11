@@ -1,12 +1,12 @@
 .controlsContainer {
   display: flex;
   padding: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(25px) saturate(200%);
-  -webkit-backdrop-filter: blur(25px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 255, 65, 0.05);
+  backdrop-filter: blur(25px) saturate(150%);
+  -webkit-backdrop-filter: blur(25px) saturate(150%);
+  border: 1px solid rgba(0, 255, 65, 0.2);
   border-radius: 100px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
   width: fit-content;
   margin: 0 auto;
 }
@@ -21,37 +21,42 @@
   padding: 12px 20px;
   border-radius: 100px;
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
+  font-family: 'Fira Code', monospace;
   transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 8px;
+  border: 1px solid transparent;
 }
 
 .button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.15);
-  transform: scale(1.02);
+  background: rgba(0, 255, 65, 0.1);
+  border-color: rgba(0, 255, 65, 0.3);
+  transform: translateY(-1px);
 }
 
 .button:active:not(:disabled) {
-  transform: scale(0.96);
-  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(0);
+  background: rgba(0, 255, 65, 0.2);
 }
 
 .button:disabled {
-  opacity: 0.2;
+  opacity: 0.1;
   cursor: not-allowed;
 }
 
 .playButton {
-  background: var(--accent-color);
-  font-weight: 600;
+  background: rgba(0, 255, 65, 0.15);
+  color: #00ff41;
+  border: 1px solid rgba(0, 255, 65, 0.3);
 }
 
 .playButton.active {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--accent-color);
+  background: rgba(255, 69, 58, 0.15);
+  color: #ff453a;
+  border-color: rgba(255, 69, 58, 0.3);
 }
 
 .stopButton {
@@ -59,11 +64,12 @@
 }
 
 .randomButton {
-  color: #ff9f0a;
+  color: #00ff41;
+  opacity: 0.8;
 }
 
 .clearButton {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 @media (max-width: 768px) {

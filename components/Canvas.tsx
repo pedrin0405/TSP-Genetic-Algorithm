@@ -54,8 +54,8 @@ export const Canvas: React.FC<CanvasProps> = ({
             <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="1" />
           </pattern>
           <linearGradient id="tourGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#0071e3" />
-            <stop offset="100%" stopColor="#5e5ce6" />
+            <stop offset="0%" stopColor="#00ff41" />
+            <stop offset="100%" stopColor="#008f11" />
           </linearGradient>
           <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="3" result="blur" />
@@ -80,10 +80,10 @@ export const Canvas: React.FC<CanvasProps> = ({
                   x2={to.x}
                   y2={to.y}
                   stroke="url(#tourGradient)"
-                  strokeWidth="3"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   filter="url(#glow)"
-                  opacity="0.8"
+                  opacity="0.9"
                 />
               );
             })}
@@ -97,17 +97,18 @@ export const Canvas: React.FC<CanvasProps> = ({
               cx={city.x}
               cy={city.y}
               r={hoveredCity === idx ? 7 : 5}
-              fill={bestTour.includes(idx) ? '#fff' : 'rgba(255, 255, 255, 0.3)'}
-              stroke={bestTour.includes(idx) ? '#0071e3' : 'transparent'}
-              strokeWidth="2"
+              fill={bestTour.includes(idx) ? '#00ff41' : 'rgba(0, 255, 65, 0.2)'}
+              stroke={bestTour.includes(idx) ? '#fff' : 'rgba(0, 255, 65, 0.4)'}
+              strokeWidth="1.5"
               className={styles.cityPoint}
               onMouseEnter={() => setHoveredCity(idx)}
               onMouseLeave={() => setHoveredCity(null)}
               style={{ 
-                filter: hoveredCity === idx ? 'drop-shadow(0 0 8px rgba(255,255,255,0.8))' : 'none',
+                filter: hoveredCity === idx ? 'drop-shadow(0 0 10px rgba(0,255,65,0.8))' : 'none',
                 cursor: 'pointer'
               }}
             />
+
             {hoveredCity === idx && (
               <g pointerEvents="none">
                 <rect 

@@ -21,17 +21,18 @@ export const Statistics: React.FC<StatisticsProps> = ({
   const getPhaseColor = (phase: string): string => {
     switch (phase) {
       case 'initialization':
-        return '#FF9800';
+        return '#00ff41';
       case 'evaluation':
-        return '#2196F3';
+        return '#00cc33';
       case 'selection':
-        return '#9C27B0';
+        return '#00a329';
       case 'reproduction':
-        return '#4CAF50';
+        return '#008020';
       default:
-        return '#6495ED';
+        return '#00ff41';
     }
   };
+
 
   const getPhaseLabel = (phase: string): string => {
     const labels: Record<string, string> = {

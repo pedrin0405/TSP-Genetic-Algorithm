@@ -57,12 +57,13 @@ export const ConvergenceChart: React.FC<ConvergenceChartProps> = ({ data }) => {
           <Line
             type="monotone"
             dataKey="bestDistance"
-            stroke="#0071e3"
+            stroke="#00ff41"
             dot={false}
             strokeWidth={3}
             isAnimationActive={false}
             name="Melhor Distância"
           />
+
         </LineChart>
       </ResponsiveContainer>
     </div>
