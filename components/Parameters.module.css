@@ -16,7 +16,7 @@
   font-size: 16px;
   font-weight: 600;
   color: #fff;
-  margin: 0;
+  margin: 0 0 8px 0;
 }
 
 .parameterGroup {
@@ -25,16 +25,69 @@
   gap: 8px;
 }
 
-.label {
+.labelWrapper {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.label {
   font-size: 13px;
-  color: var(--text-secondary);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
+}
+
+.helpIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid #00ff41;
+  color: #00ff41;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: help;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+}
+
+.helpIcon:hover {
+  background: #00ff41;
+  color: #000;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
 }
 
 .value {
-  color: #fff;
-  font-weight: 500;
+  margin-left: auto;
+  font-family: 'Fira Code', monospace;
+  color: #00ff41;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00ff41;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
 }
 
 .rangeLabels {

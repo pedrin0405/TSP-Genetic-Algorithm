@@ -31,9 +31,11 @@ export const Parameters: React.FC<ParametersProps> = ({
       <h3 className={styles.title}>Parâmetros do Algoritmo</h3>
 
       <div className={styles.parameterGroup}>
-        <label className={styles.label}>
-          Tamanho da População: <span className={styles.value}>{populationSize}</span>
-        </label>
+        <div className={styles.labelWrapper}>
+          <label className={styles.label}>Tamanho da População</label>
+          <div className={styles.helpIcon} title="Quantidade de rotas testadas ao mesmo tempo. Mais indivíduos = mais caminhos explorados.">?</div>
+          <span className={styles.value}>{populationSize}</span>
+        </div>
         <input
           type="range"
           min={minPopulation}
@@ -50,9 +52,11 @@ export const Parameters: React.FC<ParametersProps> = ({
       </div>
 
       <div className={styles.parameterGroup}>
-        <label className={styles.label}>
-          Taxa de Mutação: <span className={styles.value}>{(mutationRate * 100).toFixed(1)}%</span>
-        </label>
+        <div className={styles.labelWrapper}>
+          <label className={styles.label}>Taxa de Mutação</label>
+          <div className={styles.helpIcon} title="Chance de uma rota mudar ao acaso. Isso ajuda a descobrir novos caminhos e evitar que o algoritmo 'trave'.">?</div>
+          <span className={styles.value}>{(mutationRate * 100).toFixed(1)}%</span>
+        </div>
         <input
           type="range"
           min="0"
@@ -70,9 +74,11 @@ export const Parameters: React.FC<ParametersProps> = ({
       </div>
 
       <div className={styles.parameterGroup}>
-        <label className={styles.label}>
-          Taxa de Elitismo: <span className={styles.value}>{(elitismRate * 100).toFixed(1)}%</span>
-        </label>
+        <div className={styles.labelWrapper}>
+          <label className={styles.label}>Taxa de Elitismo</label>
+          <div className={styles.helpIcon} title="Porcentagem dos melhores resultados que passam direto para a próxima rodada sem mudanças.">?</div>
+          <span className={styles.value}>{(elitismRate * 100).toFixed(1)}%</span>
+        </div>
         <input
           type="range"
           min="0"
