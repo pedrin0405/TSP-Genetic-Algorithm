@@ -16,11 +16,30 @@
 }
 
 .header h1 {
+  position: relative;
   font-size: 32px;
   font-weight: 600;
-  letter-spacing: -1px;
-  color: #fff;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  letter-spacing: -1.2px;
+  /* Internal grid pattern matching the Canvas background */
+  background: 
+    linear-gradient(rgba(0, 255, 65, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.3) 1px, transparent 1px),
+    linear-gradient(to right, #fff, #fff);
+  background-size: 6px 6px, 6px 6px, 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gridCycle 15s linear infinite, softPulse 4s infinite ease-in-out;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 65, 0.3));
+}
+
+@keyframes gridCycle {
+  from { background-position: 0 0, 0 0, 0 0; }
+  to { background-position: 60px 60px, 60px 60px, 0 0; }
+}
+
+@keyframes softPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 255, 65, 0.2)) brightness(1); }
+  50% { filter: drop-shadow(0 0 18px rgba(0, 255, 65, 0.5)) brightness(1.1); }
 }
 
 .header p {
