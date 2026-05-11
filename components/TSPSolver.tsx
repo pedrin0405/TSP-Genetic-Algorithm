@@ -180,7 +180,8 @@ export const TSPSolver: React.FC = () => {
       </div>
 
       <div className={styles.mainContent}>
-        <div className={styles.leftPanel}>
+        {/* Coluna 1: Mapa e Controles */}
+        <div className={styles.column}>
           <Canvas
             cities={cities}
             bestTour={bestTour}
@@ -188,42 +189,55 @@ export const TSPSolver: React.FC = () => {
             canvasWidth={600}
             canvasHeight={600}
           />
-
-          <Controls
-            isRunning={isRunning}
-            onPlay={handlePlay}
-            onStop={handleStop}
-            onStep={handleStep}
-            onRandom={handleRandomCities}
-            onClear={handleClear}
-            citiesCount={cities.length}
-          />
+          <div className={styles.controlsWrapper}>
+            <Controls
+              isRunning={isRunning}
+              onPlay={handlePlay}
+              onStop={handleStop}
+              onStep={handleStep}
+              onRandom={handleRandomCities}
+              onClear={handleClear}
+              citiesCount={cities.length}
+            />
+          </div>
         </div>
 
-        <div className={styles.rightPanel}>
-          <Statistics
-            generation={generation}
-            bestDistance={bestDistance}
-            citiesCount={cities.length}
-            currentPhase={currentPhase}
-            phaseDescription={phaseDescription}
-          />
-
-          <Parameters
-            populationSize={populationSize}
-            mutationRate={mutationRate}
-            elitismRate={elitismRate}
-            onPopulationSizeChange={handlePopulationSizeChange}
-            onMutationRateChange={handleMutationRateChange}
-            onElitismRateChange={handleElitismRateChange}
-            isRunning={isRunning}
-            minPopulation={10}
-            maxPopulation={100}
-          />
-
-          <ConvergenceChart data={generationHistory} />
+        {/* Coluna 2 e 3 Agrupadas */}
+        <div className={styles.rightGroup}>
+          <div className={styles.topRow}>
+            <div className={styles.column}>
+              <Statistics
+                generation={generation}
+                bestDistance={bestDistance}
+                citiesCount={cities.length}
+                currentPhase={currentPhase}
+                phaseDescription={phaseDescription}
+              />
+            </div>
+            <div className={styles.column}>
+              <Parameters
+                populationSize={populationSize}
+                mutationRate={mutationRate}
+                elitismRate={elitismRate}
+                onPopulationSizeChange={handlePopulationSizeChange}
+                onMutationRateChange={handleMutationRateChange}
+                onElitismRateChange={handleElitismRateChange}
+                isRunning={isRunning}
+                minPopulation={10}
+                maxPopulation={100}
+              />
+            </div>
+          </div>
+          <div className={styles.bottomRow}>
+            <div className={styles.commentBox}>
+              <p>{phaseDescription}</p>
+            </div>
+            <ConvergenceChart data={generationHistory} />
+          </div>
         </div>
       </div>
     </div>
   );
+
+
 };

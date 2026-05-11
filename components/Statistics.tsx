@@ -71,10 +71,7 @@ export const Statistics: React.FC<StatisticsProps> = ({
           </span>
         </div>
       </div>
-
-      <div className={styles.phaseDescription}>
-        <p>{phaseDescription}</p>
-      </div>
     </div>
   );
+
 };

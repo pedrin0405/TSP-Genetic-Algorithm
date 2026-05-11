@@ -26,37 +26,40 @@ export const ConvergenceChart: React.FC<ConvergenceChartProps> = ({ data }) => {
     <div className={styles.chartContainer}>
       <h3 className={styles.title}>Gráfico de Convergência</h3>
       <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={chartData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(100, 150, 255, 0.2)" />
+        <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" vertical={false} />
           <XAxis
             dataKey="generation"
-            stroke="rgba(255, 255, 255, 0.5)"
-            style={{ fontSize: 12 }}
+            stroke="rgba(255, 255, 255, 0.2)"
+            style={{ fontSize: 11, fontWeight: 300 }}
+            tick={{ fill: 'rgba(255, 255, 255, 0.4)' }}
+            axisLine={false}
           />
           <YAxis
-            stroke="rgba(255, 255, 255, 0.5)"
-            style={{ fontSize: 12 }}
+            stroke="rgba(255, 255, 255, 0.2)"
+            style={{ fontSize: 11, fontWeight: 300 }}
+            tick={{ fill: 'rgba(255, 255, 255, 0.4)' }}
+            axisLine={false}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: 'rgba(26, 26, 46, 0.95)',
-              border: '1px solid rgba(100, 150, 255, 0.3)',
-              borderRadius: '4px',
+              backgroundColor: 'rgba(20, 20, 30, 0.8)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '16px',
               color: '#FFFFFF',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
             }}
-            labelStyle={{ color: '#FFFFFF' }}
+            itemStyle={{ color: '#0071e3', fontSize: 13, fontWeight: 500 }}
+            labelStyle={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: 11, marginBottom: 4 }}
             formatter={(value: any) => value.toFixed(2)}
-          />
-          <Legend
-            wrapperStyle={{ paddingTop: '16px' }}
-            iconType="line"
           />
           <Line
             type="monotone"
             dataKey="bestDistance"
-            stroke="#6495ED"
+            stroke="#0071e3"
             dot={false}
-            strokeWidth={2}
+            strokeWidth={3}
             isAnimationActive={false}
             name="Melhor Distância"
           />
@@ -64,4 +67,5 @@ export const ConvergenceChart: React.FC<ConvergenceChartProps> = ({ data }) => {
       </ResponsiveContainer>
     </div>
   );
+
 };

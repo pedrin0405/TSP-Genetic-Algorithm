@@ -50,9 +50,17 @@ export const Canvas: React.FC<CanvasProps> = ({
       >
         {/* Grid background */}
         <defs>
-          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(100, 150, 255, 0.1)" strokeWidth="0.5" />
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="1" />
           </pattern>
+          <linearGradient id="tourGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#0071e3" />
+            <stop offset="100%" stopColor="#5e5ce6" />
+          </linearGradient>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
         </defs>
         <rect width={canvasWidth} height={canvasHeight} fill="url(#grid)" />
 
@@ -71,9 +79,11 @@ export const Canvas: React.FC<CanvasProps> = ({
                   y1={from.y}
                   x2={to.x}
                   y2={to.y}
-                  stroke="#6495ED"
-                  strokeWidth="2"
-                  opacity="0.6"
+                  stroke="url(#tourGradient)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  filter="url(#glow)"
+                  opacity="0.8"
                 />
               );
             })}
@@ -86,27 +96,45 @@ export const Canvas: React.FC<CanvasProps> = ({
             <circle
               cx={city.x}
               cy={city.y}
-              r={hoveredCity === idx ? 8 : 6}
-              fill={bestTour.includes(idx) ? '#6495ED' : '#A9A9A9'}
-              stroke="#FFFFFF"
+              r={hoveredCity === idx ? 7 : 5}
+              fill={bestTour.includes(idx) ? '#fff' : 'rgba(255, 255, 255, 0.3)'}
+              stroke={bestTour.includes(idx) ? '#0071e3' : 'transparent'}
               strokeWidth="2"
               className={styles.cityPoint}
               onMouseEnter={() => setHoveredCity(idx)}
               onMouseLeave={() => setHoveredCity(null)}
+              style={{ 
+                filter: hoveredCity === idx ? 'drop-shadow(0 0 8px rgba(255,255,255,0.8))' : 'none',
+                cursor: 'pointer'
+              }}
             />
-            <text
-              x={city.x}
-              y={city.y - 12}
-              textAnchor="middle"
-              fill="#FFFFFF"
-              fontSize="12"
-              fontWeight="bold"
-              pointerEvents="none"
-            >
-              {idx}
-            </text>
+            {hoveredCity === idx && (
+              <g pointerEvents="none">
+                <rect 
+                  x={city.x - 40} 
+                  y={city.y - 35} 
+                  width="80" 
+                  height="24" 
+                  rx="12" 
+                  fill="rgba(0,0,0,0.6)" 
+                  style={{ backdropFilter: 'blur(10px)' }}
+                />
+                <text
+                  x={city.x}
+                  y={city.y - 19}
+                  textAnchor="middle"
+                  fill="#FFFFFF"
+                  fontSize="11"
+                  fontWeight="500"
+                >
+                  City {idx}
+                </text>
+              </g>
+            )}
           </g>
         ))}
+
+
       </svg>
       <p className={styles.hint}>Clique para adicionar cidades</p>
     </div>
