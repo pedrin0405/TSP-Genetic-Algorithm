@@ -92,28 +92,38 @@ export const Canvas: React.FC<CanvasProps> = ({
 
         {/* Draw cities */}
         {cities.map((city, idx) => (
-          <g key={`city-${city.id}`}>
+          <g key={`city-${city.id}`} onMouseEnter={() => setHoveredCity(idx)} onMouseLeave={() => setHoveredCity(null)} style={{ cursor: 'pointer' }}>
             <circle
               cx={city.x}
               cy={city.y}
-              r={hoveredCity === idx ? 7 : 5}
+              r={hoveredCity === idx ? 12 : 10}
               fill={bestTour.includes(idx) ? '#00ff41' : 'rgba(0, 255, 65, 0.2)'}
               stroke={bestTour.includes(idx) ? '#fff' : 'rgba(0, 255, 65, 0.4)'}
               strokeWidth="1.5"
               className={styles.cityPoint}
-              onMouseEnter={() => setHoveredCity(idx)}
-              onMouseLeave={() => setHoveredCity(null)}
               style={{ 
                 filter: hoveredCity === idx ? 'drop-shadow(0 0 10px rgba(0,255,65,0.8))' : 'none',
-                cursor: 'pointer'
               }}
             />
+            <text
+              x={city.x}
+              y={city.y}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill={bestTour.includes(idx) ? '#000' : '#00ff41'}
+              fontSize="10"
+              fontWeight="700"
+              fontFamily="Fira Code, monospace"
+              pointerEvents="none"
+            >
+              {idx}
+            </text>
 
             {hoveredCity === idx && (
               <g pointerEvents="none">
                 <rect 
                   x={city.x - 40} 
-                  y={city.y - 35} 
+                  y={city.y - 45} 
                   width="80" 
                   height="24" 
                   rx="12" 
@@ -122,7 +132,7 @@ export const Canvas: React.FC<CanvasProps> = ({
                 />
                 <text
                   x={city.x}
-                  y={city.y - 19}
+                  y={city.y - 29}
                   textAnchor="middle"
                   fill="#FFFFFF"
                   fontSize="11"
@@ -134,6 +144,7 @@ export const Canvas: React.FC<CanvasProps> = ({
             )}
           </g>
         ))}
+
 
 
       </svg>

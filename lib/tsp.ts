@@ -45,7 +45,10 @@ export class TSPGeneticAlgorithm {
     this.population = [];
     this.bestSolution = null;
     this.generationHistory = [];
+    this.generationsWithoutImprovement = 0;
+    this.lastBestDistance = Infinity;
   }
+
 
   private calculateDistance(tour: number[]): number {
     let distance = 0;
@@ -85,7 +88,10 @@ export class TSPGeneticAlgorithm {
     this.bestSolution = { ...this.population[0] };
     this.generation = 0;
     this.generationHistory = [this.bestSolution.distance];
+    this.generationsWithoutImprovement = 0;
+    this.lastBestDistance = this.bestSolution.distance;
   }
+
 
   private sortPopulation(): void {
     this.population.sort((a, b) => a.distance - b.distance);
