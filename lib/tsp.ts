@@ -193,10 +193,9 @@ export class TSPGeneticAlgorithm {
 
     this.generation++;
     
-    // Registrar apenas a cada 5 gerações para performance
-    if (this.generation % 5 === 0) {
-      this.generationHistory.push(this.bestSolution!.distance);
-    }
+    // Registrar a cada geração para o gráfico ficar suave
+    this.generationHistory.push(this.bestSolution!.distance);
+
 
     // Detectar convergência: se melhorou, resetar contador; senão, incrementar
     if (this.bestSolution!.distance < this.lastBestDistance) {

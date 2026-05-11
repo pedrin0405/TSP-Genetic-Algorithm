@@ -44,12 +44,21 @@ export const TSPSolver: React.FC = () => {
   };
 
   const handleCityAdded = (city: City) => {
+    handleStop();
     const newCities = [...cities, city];
     setCities(newCities);
     algorithm.setCities(newCities);
+    setGeneration(0);
+    setBestDistance(0);
+    setBestTour([]);
+    setGenerationHistory([]);
+    setCurrentPhase('initialization');
+    setPhaseDescription('Cidade adicionada. Clique Play para reiniciar.');
   };
 
+
   const handleRandomCities = () => {
+    handleStop();
     const newCities: City[] = [];
     const count = Math.floor(Math.random() * 10) + 8; // 8-18 cidades (reduzido)
 
@@ -70,6 +79,7 @@ export const TSPSolver: React.FC = () => {
     setCurrentPhase('initialization');
     setPhaseDescription('Clique no botão Play para iniciar');
   };
+
 
   const handleClear = () => {
     setCities([]);
@@ -140,20 +150,21 @@ export const TSPSolver: React.FC = () => {
     if (!isRunning) return;
 
     const animationLoop = () => {
-      // Executar 10 steps por frame para acelerar
-      for (let i = 0; i < 10; i++) {
-        algorithm.step();
-        // Parar automaticamente se convergiu (50 gens sem melhoria)
-        if (algorithm.hasConverged()) {
-          setIsRunning(false);
-          updateStats();
-          setPhaseDescription('✅ Convergência atingida! Melhor solução encontrada.');
-          return;
-        }
+      // Executar 1 step por frame para melhor visualização
+      algorithm.step();
+      
+      // Parar automaticamente se convergiu
+      if (algorithm.hasConverged()) {
+        setIsRunning(false);
+        updateStats();
+        setPhaseDescription('✅ Convergência atingida! Melhor solução encontrada.');
+        return;
       }
+      
       updateStats();
       animationRef.current = requestAnimationFrame(animationLoop);
     };
+
 
     animationRef.current = requestAnimationFrame(animationLoop);
 
