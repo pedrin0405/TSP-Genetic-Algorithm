@@ -1,89 +1,154 @@
-# TSP Genetic Algorithm Visualizer
+# TSP Genetic Algorithm Solver
 
-A professional, interactive web application for visualizing and understanding Genetic Algorithms applied to the Traveling Salesman Problem (TSP).
+Uma aplicação web interativa que visualiza a solução do **Problema do Caixeiro Viajante (Traveling Salesman Problem - TSP)** usando um **Algoritmo Genético**.
 
-## Features
+## Características Principais
 
-- 🎯 **Interactive Canvas**: Click to place cities or generate random configurations
-- 🧬 **Real-time Visualization**: Watch the algorithm evolve and find optimal routes
-- 📊 **Advanced Charts**: Track fitness progression with Recharts
-- ⚙️ **Configurable Parameters**: Adjust population size, mutation rate, and elitism
-- 🌙 **Dark Mode**: Automatic theme detection
-- 📱 **Fully Responsive**: Works seamlessly on all devices
-- ⚡ **Performance Optimized**: Built with Next.js for optimal speed
+### 🎨 Canvas Interativo
+- Clique para adicionar cidades ao mapa
+- Visualização em SVG com grid de referência
+- Desenho automático do melhor caminho encontrado
 
-## Tech Stack
+### 🎮 Controles
+- **Play**: Inicia a execução do algoritmo
+- **Stop**: Para a execução
+- **Step**: Avança uma geração por vez
+- **Aleatório**: Gera 10-25 cidades automaticamente
+- **Limpar**: Reseta tudo e limpa o canvas
 
-- **Next.js 15** - React framework with server-side rendering
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Modern utility-first styling
-- **Recharts** - React chart library
-- **Lucide React** - Beautiful icon library
+### 📊 Estatísticas em Tempo Real
+- Número de gerações executadas
+- Melhor distância encontrada
+- Contagem de cidades
+- Fase atual do algoritmo com descrição visual
 
-## Getting Started
+### 🔄 Visualização das Fases
+- **Inicialização**: Criação da população inicial
+- **Avaliação**: Cálculo do fitness de cada indivíduo
+- **Seleção**: Seleção dos melhores indivíduos (torneio)
+- **Reprodução**: Criação da nova geração (crossover e mutação)
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+### 📈 Gráfico de Convergência
+- Linha mostrando a evolução da melhor distância ao longo das gerações
+- Atualização em tempo real
 
-### Installation
+### ⚙️ Parâmetros Ajustáveis
+- **Tamanho da População**: 4-200 indivíduos
+- **Taxa de Mutação**: 0-100%
+- **Taxa de Elitismo**: 0-100%
+- Os parâmetros são bloqueados durante a execução
 
+## 🎨 Design
+- Interface limpa e profissional
+- Dark mode por padrão
+- Paleta de cores: Azul principal (#6495ED) com cinzas neutros
+- Totalmente responsivo (desktop, tablet e mobile)
+- Animações suaves e feedback visual
+
+## 🚀 Como Usar
+
+### Instalação
 ```bash
-# Clone the repository
-git clone <repo-url>
-
-# Install dependencies
 npm install
+```
 
-# Start development server
+### Desenvolvimento
+```bash
 npm run dev
 ```
+A aplicação estará disponível em `http://localhost:3000`
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## How to Use
-
-1. **Add Cities**: Click on the canvas to manually place cities, or use "Generate Random" to create a random configuration
-2. **Adjust Parameters**: Configure population size, mutation rate, and elitism percentage
-3. **Start Evolution**: Click "Start" to begin the genetic algorithm
-4. **Monitor Progress**: Watch the evolution happen in real-time with visual feedback
-5. **Analyze**: Review the fitness chart to understand convergence patterns
-
-## Algorithm Details
-
-### Selection
-Uses tournament selection to identify the fittest individuals for reproduction.
-
-### Crossover (OX)
-Implements Order Crossover (OX) to combine genetic material from two parent routes while maintaining valid tour structure.
-
-### Mutation
-Applies random city swaps to introduce genetic diversity and escape local optima.
-
-### Elitism
-Preserves the best solutions across generations to prevent performance degradation.
-
-## Deployment
-
-### Deploy to Vercel
-
-The easiest way to deploy is to use [Vercel](https://vercel.com):
-
+### Build de Produção
 ```bash
-npm install -g vercel
-vercel
+npm run build
+npm start
 ```
 
-Or connect your Git repository directly on [vercel.com](https://vercel.com/new).
+## 📋 Como Jogar
 
-## License
+1. **Adicione Cidades**:
+   - Clique no canvas para adicionar cidades manualmente
+   - Ou use o botão "Aleatório" para gerar automaticamente
 
-MIT
+2. **Configure os Parâmetros**:
+   - Ajuste o tamanho da população
+   - Configure a taxa de mutação
+   - Configure a taxa de elitismo
 
-## Author
+3. **Execute o Algoritmo**:
+   - Clique "Play" para iniciar automaticamente
+   - Use "Step" para avançar manualmente
+   - Observe o gráfico de convergência em tempo real
 
-Created with ❤️ by a senior developer
+4. **Analise os Resultados**:
+   - Veja as estatísticas atualizadas em tempo real
+   - Observe qual fase está sendo executada
+   - Acompanhe a melhoria da solução no gráfico
 
----
+## 🧬 Algoritmo Genético Implementado
 
-**Educational Project** - Learn about genetic algorithms while visualizing their power in solving complex optimization problems.
+### Operadores Genéticos
+- **Seleção**: Torneio com tamanho 3
+- **Crossover**: Ordem com preservação (Order Crossover)
+- **Mutação**: Troca aleatória de duas cidades
+- **Elitismo**: Preservação dos melhores indivíduos
+
+### Características
+- Inicialização com permutações aleatórias
+- Função de fitness = distância total da rota
+- População dinâmica conforme configuração
+- Convergência progressiva
+
+## 🛠️ Stack Tecnológico
+- **Next.js 14**: Framework React moderno
+- **React 18**: UI interativa
+- **TypeScript**: Type safety
+- **Recharts**: Gráficos
+- **CSS Modules**: Estilos isolados
+- **SVG**: Renderização do canvas
+
+## 📱 Responsividade
+- Desktop (≥1200px): Layout 2 colunas
+- Tablet (768px-1199px): Layout 1 coluna
+- Mobile (<768px): Interface otimizada para toque
+
+## 📝 Estrutura do Projeto
+```
+TSP-Genetic-Algorithm/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+├── components/
+│   ├── Canvas.tsx
+│   ├── Canvas.module.css
+│   ├── Controls.tsx
+│   ├── Controls.module.css
+│   ├── Statistics.tsx
+│   ├── Statistics.module.css
+│   ├── Parameters.tsx
+│   ├── Parameters.module.css
+│   ├── ConvergenceChart.tsx
+│   ├── ConvergenceChart.module.css
+│   ├── TSPSolver.tsx
+│   └── TSPSolver.module.css
+├── lib/
+│   └── tsp.ts (Algoritmo genético)
+├── public/
+├── package.json
+├── tsconfig.json
+└── next.config.js
+```
+
+## 🎓 Propósito Educacional
+Esta aplicação foi desenvolvida para fins educacionais, demonstrando:
+- Como implementar um algoritmo genético
+- Visualização de algoritmos em tempo real
+- UI/UX interativa com React
+- Responsividade com CSS
+
+## 📄 Licença
+Projeto para Universidade Luterana do Brasil (ULBRA)
+
+## 👨‍💻 Desenvolvedor
+Noobmaster

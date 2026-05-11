@@ -1,8 +1,7 @@
 {
-  "name": "tsp-genetic-algorithm",
+  "name": "tsp-genetic-algorithm-solver",
   "version": "1.0.0",
-  "description": "Professional web app for visualizing Genetic Algorithm applied to TSP",
-  "private": true,
+  "description": "Interactive web application for visualizing TSP solutions using Genetic Algorithm",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,20 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
-    "lucide-react": "^0.408.0",
-    "next": "^15.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "recharts": "^2.14.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "next": "^14.0.0",
+    "recharts": "^2.10.0"
   },
   "devDependencies": {
+    "typescript": "^5.0.0",
     "@types/node": "^20.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.3.0"
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
   }
 }

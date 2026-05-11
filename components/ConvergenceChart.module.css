@@ -1,0 +1,55 @@
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  min-height: 380px;
+  transition: all 0.4s ease;
+}
+
+.chartContainer:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.3px;
+}
+
+.emptyMessage {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 768px) {
+  .chartContainer {
+    min-height: 320px;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .emptyMessage {
+    font-size: 14px;
+    height: 250px;
+  }
+}
