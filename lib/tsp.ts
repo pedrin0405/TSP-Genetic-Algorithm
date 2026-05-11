@@ -164,8 +164,48 @@ export class TSPGeneticAlgorithm {
     return child;
   }
 
+  private applyTwoOpt(tour: number[]): number[] {
+    const size = tour.length;
+    let improved = true;
+    const newTour = [...tour];
+
+    while (improved) {
+      improved = false;
+      for (let i = 1; i < size - 2; i++) {
+        for (let j = i + 1; j < size - 1; j++) {
+          // Tentar inverter o segmento entre i e j
+          const d1 = this.getDist(this.cities[newTour[i - 1]], this.cities[newTour[i]]) +
+                     this.getDist(this.cities[newTour[j]], this.cities[newTour[j + 1]]);
+          const d2 = this.getDist(this.cities[newTour[i - 1]], this.cities[newTour[j]]) +
+                     this.getDist(this.cities[newTour[i]], this.cities[newTour[j + 1]]);
+
+          if (d2 < d1) {
+            // Inverter
+            this.reverseSegment(newTour, i, j);
+            improved = true;
+          }
+        }
+      }
+      // Limitar a apenas uma rodada de melhoria por indivíduo para performance
+      break; 
+    }
+    return newTour;
+  }
+
+  private getDist(c1: City, c2: City): number {
+    return Math.hypot(c1.x - c2.x, c1.y - c2.y);
+  }
+
+  private reverseSegment(tour: number[], i: number, j: number): void {
+    while (i < j) {
+      [tour[i], tour[j]] = [tour[j], tour[i]];
+      i++;
+      j--;
+    }
+  }
+
   reproduce(selected: Individual[]): void {
-    this.currentPhase = { phase: 'reproduction', description: 'Criando nova geração...' };
+    this.currentPhase = { phase: 'reproduction', description: 'Criando nova geração e otimizando...' };
 
     const eliteCount = Math.ceil(this.population.length * this.elitismRate);
     const newPopulation: Individual[] = [];
@@ -179,6 +219,11 @@ export class TSPGeneticAlgorithm {
       const parent2 = selected[Math.floor(Math.random() * selected.length)].tour;
       let child = this.crossover(parent1, parent2);
       child = this.mutate(child);
+      
+      // Aplicar 2-opt com 20% de chance para "lapidar" o indivíduo
+      if (Math.random() < 0.2) {
+        child = this.applyTwoOpt(child);
+      }
 
       const distance = this.calculateDistance(child);
       newPopulation.push({ tour: child, distance });
@@ -186,6 +231,7 @@ export class TSPGeneticAlgorithm {
 
     this.population = newPopulation.slice(0, this.population.length);
   }
+
 
   step(): Generation {
     if (this.population.length === 0) {
